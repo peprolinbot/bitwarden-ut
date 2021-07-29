@@ -1,0 +1,6 @@
+[submodule "pylibs/pexpect"]
+	path = pylibs/pexpect
+	url = https://github.com/pexpect/pexpect.git
+[submodule "pylibs/ptyprocess"]
+	path = pylibs/ptyprocess
+	url = https://github.com/pexpect/ptyprocess.git
