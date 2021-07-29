@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the bitwarden-ut.peprolinbot package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bitwarden-ut.peprolinbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-29 13:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/Components/ItemsDelegate.qml:19
+msgid "Delete"
+msgstr ""
+
+#: ../qml/Components/ItemsDelegate.qml:32
+msgid "Copy password"
+msgstr ""
+
+#: ../qml/Components/ItemsDelegate.qml:39
+msgid "Copy user"
+msgstr ""
+
+#: ../qml/Components/ItemsDelegate.qml:46
+msgid "Copy 2FA"
+msgstr ""
+
+#: ../qml/Components/ItemsDelegate.qml:56
+msgid "Edit key"
+msgstr ""
+
+#: ../qml/Components/PageMain.qml:12 bitwarden-ut.desktop.in.h:1
+msgid "uBitwarden"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:12
+msgid "Settings"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:38
+msgid "Server"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:49
+msgid "User"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:55
+msgid "Password"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:60
+msgid "2FA Code"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:68
+msgid "Login"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:84
+msgid "Checking..."
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:88
+msgid "Logged in"
+msgstr ""
+
+#: ../qml/Components/PageSettings.qml:92
+msgid "Not logged in"
+msgstr ""

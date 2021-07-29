@@ -1,0 +1,15 @@
+{
+    "name": "bitwarden-ut.peprolinbot",
+    "description": "A Bitwarden client for ubuntu touch",
+    "architecture": "@CLICK_ARCH@",
+    "title": "uBitwarden",
+    "hooks": {
+        "bitwarden-ut": {
+            "apparmor": "bitwarden-ut.apparmor",
+            "desktop":  "bitwarden-ut.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Pedro Rey Anca <contact@peprolinbot.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}

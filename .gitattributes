@@ -1,0 +1,2 @@
+bw* filter=lfs diff=lfs merge=lfs -text
+bw* !text !filter !merge !diff
