@@ -45,11 +45,13 @@ def get_server():
     return child.read().decode().split()[0]
 
 def is_logged_in():
-    child = pexpect.spawn("./bw login")
-    if re.search("You are already logged in as", child.read().decode()):
-        return True
-    else:
+    child = pexpect.spawn("./bw status")
+    str_data = child.read().decode()
+    data = json.loads(str_data)
+    if data["status"] == "unauthenticated":
         return False
+    else:
+        return True
 
 def synchronize(session):
     pexpect.run("./bw sync", env={**os.environ, "BW_SESSION": session})
