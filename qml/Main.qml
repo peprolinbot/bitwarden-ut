@@ -47,17 +47,17 @@ MainView {
    }
 
    Component {
-     id: pageMainComponent
+     id: mainPageComponent
 
-     PageMain {
-       id: pageMain
-       objectName: "pageMain"
+     PageFolderContents {
+       id: mainPage
+       objectName: "mainPage"
      }
    }
 
 
    Component.onCompleted: {
-     mainStack.push(pageMainComponent);
+     mainStack.push(mainPageComponent);
    }
       Python {
         id: py
@@ -69,6 +69,10 @@ MainView {
           console.log('Python version: ' + pythonVersion());
 
           addImportPath(Qt.resolvedUrl('../src/'));
+
+          // Add needed python libraries to sys.path
+          addImportPath(Qt.resolvedUrl('../pylibs/pexpect'));
+          addImportPath(Qt.resolvedUrl('../pylibs/ptyprocess'));
 
           importModule('bw_cli_wrapper', function() {});
           console.log('Main python module imported');

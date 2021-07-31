@@ -3,7 +3,7 @@ import Ubuntu.Components 1.3
 import "../Components"
 
 Page {
-  objectName: "PageMain"
+  objectName: "PageFolderContents"
 
   anchors.fill: parent
 
