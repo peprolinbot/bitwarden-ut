@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bitwarden-ut.peprolinbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 18:27+0000\n"
+"POT-Creation-Date: 2021-08-03 15:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Components/ItemsDelegate.qml:19
+#: ../qml/Components/FolderContentsDelegate.qml:19
+#: ../qml/Components/FoldersDelegate.qml:21
 msgid "Delete"
 msgstr ""
 
-#: ../qml/Components/ItemsDelegate.qml:32
+#: ../qml/Components/FolderContentsDelegate.qml:34
 msgid "Copy password"
 msgstr ""
 
-#: ../qml/Components/ItemsDelegate.qml:39
+#: ../qml/Components/FolderContentsDelegate.qml:41
 msgid "Copy user"
 msgstr ""
 
-#: ../qml/Components/ItemsDelegate.qml:46
+#: ../qml/Components/FolderContentsDelegate.qml:48
 msgid "Copy 2FA"
 msgstr ""
 
-#: ../qml/Components/ItemsDelegate.qml:56
+#: ../qml/Components/FolderContentsDelegate.qml:58
 msgid "Edit key"
 msgstr ""
 
-#: ../qml/Components/PageFolderContents.qml:12 bitwarden-ut.desktop.in.h:1
+#: ../qml/Components/FoldersDelegate.qml:35
+msgid "Rename folder"
+msgstr ""
+
+#: ../qml/Components/FoldersDelegate.qml:71
+msgid "No folder"
+msgstr ""
+
+#: ../qml/Components/PageFolders.qml:12 bitwarden-ut.desktop.in.h:1
 msgid "uBitwarden"
 msgstr ""
 
@@ -75,4 +84,16 @@ msgstr ""
 
 #: ../qml/Components/PageSettings.qml:81
 msgid "Not logged in"
+msgstr ""
+
+#: ../qml/Components/RenamePopUp.qml:8
+msgid "Enter the new name"
+msgstr ""
+
+#: ../qml/Components/RenamePopUp.qml:13
+msgid "Confirm"
+msgstr ""
+
+#: ../qml/Components/RenamePopUp.qml:21
+msgid "Cancel"
 msgstr ""
