@@ -3,16 +3,13 @@ import Ubuntu.Components 1.3
 import "../Components"
 
 Page {
-  objectName: "PageFolderContents"
-
-  property var id
-  property var name
+  objectName: "PageFolders"
 
   anchors.fill: parent
 
   header: PageHeader {
     id: header
-    title: name
+    title: i18n.tr('uBitwarden')
 
     trailingActionBar {
       actions: [
@@ -25,11 +22,11 @@ Page {
       Action {
         iconName: "reload"
         onTriggered: {
-          py.call('bw_cli_wrapper.synchronize', [bwSettings.session, id], function(result) {
-            console.log("Vault synchronized");
-          })
+          py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
+                    console.log("Vault synchronized");
+                })
           mainStack.pop();
-          mainStack.push(Qt.resolvedUrl("PageFolderContents.qml"));
+          mainStack.push(Qt.resolvedUrl("PageFolders.qml"));
         }
       }
       ]
@@ -37,24 +34,24 @@ Page {
   }
 
   Component {
-    id: folderContentsDelegate
+    id: foldersDelegate
 
-    FolderContentsDelegate {}
+    FoldersDelegate {}
   }
 
   ItemsList {
-    id: itemsList
+    id: folderList
     anchors.top: header.bottom
     anchors.right: parent.right
     anchors.left: parent.left
     anchors.bottom: parent.bottom
-    delegate: folderContentsDelegate
+    delegate: foldersDelegate
   }
 
   Component.onCompleted: {
-    py.call('bw_cli_wrapper.get_items', [bwSettings.session, id], function(result) {
-      itemsList.populate(result);
-      console.log("Obtained items from Bitwarden");
-    })
+    py.call('bw_cli_wrapper.get_folders', [bwSettings.session], function(result) {
+              folderList.populate(result);
+              console.log("Obtained items from Bitwarden");
+          })
   }
 }

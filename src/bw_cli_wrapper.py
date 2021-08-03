@@ -4,9 +4,25 @@ import pexpect
 import re
 import json
 import os
+import base64
 
-def get_items(session):
-    child = pexpect.spawn("./bw list items --raw", env={**os.environ, "BW_SESSION": session})
+def get_items(session, folder_id=""):
+    if folder_id == "":
+        child = pexpect.spawn("./bw list items --raw", env={**os.environ, "BW_SESSION": session})
+    else:
+        if folder_id == None:
+            folder_id = "null" # This is to searc items which aren't in any folder
+        child = pexpect.spawn("./bw list items --folderid "+folder_id+" --raw", env={**os.environ, "BW_SESSION": session})
+    str_data = child.read().decode()
+    try:
+        data = json.loads('{"x": '+str_data+'}')["x"] # Turn it into a list of dicts
+    except ValueError:
+        raise Exception("Error decoding json. Bitwarden output: " + str_data)
+
+    return data
+
+def get_folders(session):
+    child = pexpect.spawn("./bw list folders --raw", env={**os.environ, "BW_SESSION": session})
     str_data = child.read().decode()
     try:
         data = json.loads('{"x": '+str_data+'}')["x"] # Turn it into a list of dicts
@@ -18,6 +34,11 @@ def get_items(session):
 def get_totp(session, id):
     child = pexpect.spawn("./bw get totp "+id, env={**os.environ, "BW_SESSION": session})
     return child.read().decode().split()[0]
+
+def rename_object(session, type, id, new_name):
+    json_data = json.dumps({"name": new_name})
+    encoded_data = base64.b64encode(json_data.encode()).decode()
+    pexpect.run("./bw edit "+type+" "+id+" "+encoded_data, env={**os.environ, "BW_SESSION": session})
 
 def delete_object(session, type, id):
     pexpect.run("./bw delete "+type+" "+id, env={**os.environ, "BW_SESSION": session})

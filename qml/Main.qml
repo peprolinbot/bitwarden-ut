@@ -49,7 +49,7 @@ MainView {
    Component {
      id: mainPageComponent
 
-     PageFolderContents {
+     PageFolders {
        id: mainPage
        objectName: "mainPage"
      }
