@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=uBitwarden
-Exec= PYTHONPATH=pylibs/pexpect:pylibs/ptyprocess qmlscene %U qml/Main.qml
+Exec=qmlscene %U qml/Main.qml
 Icon=assets/bitwarden.png
 Terminal=false
 Type=Application
