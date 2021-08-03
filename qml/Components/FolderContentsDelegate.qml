@@ -21,6 +21,8 @@ ListItem {
         py.call('bw_cli_wrapper.delete_object', [bwSettings.session, item.object, item.id], function(result) {
           console.log("Deleting "+item.object+" with id "+item.id);
         })
+        mainStack.pop();
+        mainStack.push(Qt.resolvedUrl("PageFolders.qml"));
       }
     }
   }
