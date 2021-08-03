@@ -23,57 +23,35 @@ Page {
         iconName: "reload"
         onTriggered: {
           py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
-                    console.log("Vault synchronized");
-                })
-              mainStack.pop();
-          mainStack.push(Qt.resolvedUrl("PageMain.qml"));
+            console.log("Vault synchronized");
+          })
+          mainStack.pop();
+          mainStack.push(Qt.resolvedUrl("PageFolderContents.qml"));
         }
       }
       ]
     }
   }
 
-  ScrollView {
-    anchors.top: parent.header.bottom
-    width: parent.width
-    height: parent.height
-    contentItem: itemsListView
-  }
-
-  ListView {
-    id: itemsListView
-    anchors.fill: parent
-    model: storedItemsModel // searching ? searchKeysModel : storedKeys
-    delegate: itemsDelegate
-  }
-  ListModel {
-    id: storedItemsModel
-
-    function populate(data) {
-      storedItemsModel.clear();
-      if (data.length > 0) {
-        for (var i = 0; i < data.length; i++) {
-          try {
-            var itemData = data[i]; // TODO
-            storedItemsModel.append({item: itemData});  // TODO searchablestring: data.item(i).description + " " + parsedKey.issuer + " " + parsedKey.label
-          } catch(e) {
-            console.log("Error",e);
-          }
-        }
-      }
-    }
-  }
-
   Component {
-    id: itemsDelegate
+    id: folderContentsDelegate
 
-    ItemsDelegate {}
+    FolderContentsDelegate {}
+  }
+
+  ItemsList {
+    id: itemsList
+    anchors.top: header.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    delegate: folderContentsDelegate
   }
 
   Component.onCompleted: {
     py.call('bw_cli_wrapper.get_items', [bwSettings.session], function(result) {
-              storedItemsModel.populate(result);
-              console.log("Obtained items from Bitwarden");
-          })
+      itemsList.populate(result);
+      console.log("Obtained items from Bitwarden");
+    })
   }
 }
