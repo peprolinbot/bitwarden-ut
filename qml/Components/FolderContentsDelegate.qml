@@ -4,7 +4,7 @@ import Ubuntu.Components 1.3
 ListItem {
   width: parent.width
   anchors.horizontalCenter: parent.horizontalCenter
-  divider.visible: false
+  divider.visible: true
   clip: true
 
   onClicked: {
