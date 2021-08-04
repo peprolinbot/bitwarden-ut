@@ -17,12 +17,6 @@ Page {
     trailingActionBar {
       actions: [
       Action {
-        iconName: "settings"
-        onTriggered: {
-          mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
-        }
-      },
-      Action {
         iconName: "reload"
         onTriggered: {
           py.call('bw_cli_wrapper.synchronize', [bwSettings.session, id], function(result) {
