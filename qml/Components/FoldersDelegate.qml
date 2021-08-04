@@ -58,7 +58,6 @@ ListItem {
     id:layout
 
     title.text: item.name
-    title.font.bold: true
 
     width: parent.width
     anchors.horizontalCenter: parent.horizontalCenter
