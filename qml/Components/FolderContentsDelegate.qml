@@ -56,7 +56,7 @@ ListItem {
       iconName: "clock"
       text: i18n.tr("Copy 2FA")
       onTriggered: {
-        py.call('bw_cli_wrapper.get_totp', [bwSettings.session, item.id], function(result) {
+        py.call('otp_helper.get_otp', [item.login.totp], function(result) {
           console.log("Obtained 2FA code for  "+item.name);
           Clipboard.push(result);
         })
