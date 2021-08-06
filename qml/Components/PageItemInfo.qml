@@ -22,6 +22,7 @@ Page {
     Column {
       anchors.fill: parent
       ListItem {
+        visible: item.type == 1 && item.login.username != null
         trailingActions: ListItemActions {
           actions: Action {
             iconName: "edit-copy"
@@ -40,6 +41,7 @@ Page {
       }
 
       ListItem {
+        visible: item.type == 1 && item.login.password != null
         trailingActions: ListItemActions {
           actions: Action {
             iconName: "edit-copy"
@@ -68,7 +70,7 @@ Page {
       }
 
       ListItem {
-        visible: item.login.totp!=null
+        visible: item.type == 1 && item.login.totp != null
         trailingActions: ListItemActions {
           actions: Action {
             iconName: "edit-copy"
@@ -92,7 +94,7 @@ Page {
           Timer {
             interval: 100
             repeat: true
-            running: item.login.totp!=null
+            running: parent.parent.visible
             onTriggered: {
               py.call('otp_helper.get_remaining_time', [item.login.totp], function(result) {
                 dueTime.text = result
