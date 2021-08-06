@@ -34,6 +34,8 @@ Page {
         ListItemLayout {
           title.text: i18n.tr("Username")
           subtitle.text: item.login.username
+          title.textSize: Label.Small
+          subtitle.textSize: Label.Medium
         }
       }
 
@@ -51,6 +53,8 @@ Page {
           title.text: i18n.tr("Password")
           subtitle.text: showPasswordTrigger.checked?item.login.password:"••••••••"
           subtitle.elide: Text.ElideNone
+          title.textSize: Label.Small
+          subtitle.textSize: Label.Medium
 
           Label{
             text: i18n.tr("Show")
@@ -77,6 +81,8 @@ Page {
         ListItemLayout {
           title.text: i18n.tr("One time password")
           subtitle.text: ""
+          title.textSize: Label.Small
+          subtitle.textSize: Label.Medium
 
           Label {
             id: dueTime
