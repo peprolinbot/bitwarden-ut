@@ -5,8 +5,6 @@ import Ubuntu.Components.Popups 1.3
 ListItem {
   width: parent.width
   anchors.horizontalCenter: parent.horizontalCenter
-  divider.visible: true
-  clip: true
 
   onClicked: {
     mainStack.push(Qt.resolvedUrl("PageFolderContents.qml"), {

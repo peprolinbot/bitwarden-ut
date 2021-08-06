@@ -4,8 +4,6 @@ import Ubuntu.Components 1.3
 ListItem {
   width: parent.width
   anchors.horizontalCenter: parent.horizontalCenter
-  divider.visible: true
-  clip: true
 
   onClicked: {
     mainStack.push(Qt.resolvedUrl("PageItemInfo.qml"), {
@@ -30,42 +28,31 @@ ListItem {
   trailingActions: ListItemActions {
     actions: [
     Action {
+      visible: item.type == 2  // If not a note, disappear
       iconName: "edit-copy"
       text: i18n.tr("Copy note content")
       onTriggered: {
         Clipboard.push(item.notes)
       }
-      Component.onCompleted: {
-        if (item.type != 2) { // If not a note, disappear
-          this.visible = false
-        }
-      }
     },
     Action {
+      visible: item.type == 1
       iconName: "stock_key"
       text: i18n.tr("Copy password")
       onTriggered: {
         Clipboard.push(item.login.password)
       }
-      Component.onCompleted: {
-        if (item.type != 1) { // If not a login, disappear
-          this.visible = false
-        }
-      }
     },
     Action {
+      visible: item.type == 1
       iconName: "contact"
       text: i18n.tr("Copy user")
       onTriggered: {
         Clipboard.push(item.login.username)
       }
-      Component.onCompleted: {
-        if (item.type != 1) { // If not a login, disappear
-          this.visible = false
-        }
-      }
     },
     Action {
+      visible: item.type == 1 && item.login.totp != null
       iconName: "clock"
       text: i18n.tr("Copy 2FA")
       onTriggered: {
@@ -74,15 +61,10 @@ ListItem {
           Clipboard.push(result);
         })
       }
-      Component.onCompleted: {
-        if (item.type != 1 || item.login.totp == null) { // If not a login, or a login without 2fa, disappear
-          this.visible = false
-        }
-      }
     },
     Action {
       iconName: "edit"
-      text: i18n.tr("Edit key")
+      text: i18n.tr("Edit")
       onTriggered: {
         mainStack.push(Qt.resolvedUrl("PageEditAddItem.qml"), {
           "editMode": true,
@@ -102,7 +84,7 @@ ListItem {
     anchors.horizontalCenter: parent.horizontalCenter
 
     Component.onCompleted: {
-      if (item.type == 1) {
+      if (item.login.username != null) {
         this.subtitle.text = item.login.username
       }
     }
