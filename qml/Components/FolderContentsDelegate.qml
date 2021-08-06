@@ -36,7 +36,7 @@ ListItem {
       }
     },
     Action {
-      visible: item.type == 1
+      visible: item.type == 1 && item.login.password != null
       iconName: "stock_key"
       text: i18n.tr("Copy password")
       onTriggered: {
@@ -44,7 +44,7 @@ ListItem {
       }
     },
     Action {
-      visible: item.type == 1
+      visible: item.type == 1 && item.login.username != null
       iconName: "contact"
       text: i18n.tr("Copy user")
       onTriggered: {
