@@ -62,6 +62,52 @@ Page {
           }
         }
       }
+
+      ListItem {
+        visible: item.login.totp!=null
+        trailingActions: ListItemActions {
+          actions: Action {
+            iconName: "edit-copy"
+            text: i18n.tr("Copy 2FA code")
+            onTriggered: {
+              Clipboard.push(item.login.password)
+            }
+          }
+        }
+        ListItemLayout {
+          title.text: i18n.tr("One time password")
+          subtitle.text: ""
+
+          Label {
+            id: dueTime
+            text: ""
+          }
+
+          Timer {
+            interval: 100
+            repeat: true
+            running: item.login.totp!=null
+            onTriggered: {
+              py.call('otp_helper.get_remaining_time', [item.login.totp], function(result) {
+                dueTime.text = result
+              })
+              py.call('otp_helper.get_otp', [item.login.totp], function(result) {
+                parent.subtitle.text = result
+              })
+            }
+          }
+
+
+          ProgressCircle {
+            size: parent.height - units.dp(32)
+            colorCircle: UbuntuColors.inkstone
+            showBackground: false
+            isPie: true
+            arcBegin: 0
+            arcEnd: dueTime.text*360/30
+          }
+        }
+      }
     }
   }
 

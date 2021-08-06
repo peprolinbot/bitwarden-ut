@@ -73,9 +73,11 @@ MainView {
           // Add needed python libraries to sys.path
           addImportPath(Qt.resolvedUrl('../pylibs/pexpect'));
           addImportPath(Qt.resolvedUrl('../pylibs/ptyprocess'));
+          addImportPath(Qt.resolvedUrl('../pylibs/pyotp/src'));
 
           importModule('bw_cli_wrapper', function() {});
-          console.log('Main python module imported');
+          importModule('otp_helper', function() {});
+          console.log('Python modules imported');
         }
 
         onError: {
