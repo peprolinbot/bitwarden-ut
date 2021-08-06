@@ -4,3 +4,6 @@
 [submodule "pylibs/ptyprocess"]
 	path = pylibs/ptyprocess
 	url = https://github.com/pexpect/ptyprocess.git
+[submodule "pylibs/pyotp"]
+	path = pylibs/pyotp
+	url = https://github.com/pyauth/pyotp.git
