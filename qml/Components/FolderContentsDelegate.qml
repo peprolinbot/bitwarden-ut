@@ -8,8 +8,8 @@ ListItem {
   clip: true
 
   onClicked: {
-    mainStack.push(Qt.resolvedUrl("PageItemsInfo.qml"), {
-      "id": id
+    mainStack.push(Qt.resolvedUrl("PageItemInfo.qml"), {
+      "item": item
     });
   }
 
