@@ -6,28 +6,29 @@ import json
 import os
 import base64
 
+VAULT_DIR=os.environ['HOME']+"/.local/share/bitwarden-ut.peprolinbot"
+if not os.path.exists(VAULT_DIR):
+    os.makedirs(VAULT_DIR)
+
+VAULT_FILE_NAME="vault.json"
+
+VAULT_PATH=VAULT_DIR+"/"+VAULT_FILE_NAME
+
 def get_items(session, folder_id=""):
     if folder_id == "":
-        child = pexpect.spawn("./bw list items --raw", env={**os.environ, "BW_SESSION": session})
+        return get_vault(session)["items"]
     else:
         if folder_id == None:
-            folder_id = "null" # This is to searc items which aren't in any folder
-        child = pexpect.spawn("./bw list items --folderid "+folder_id+" --raw", env={**os.environ, "BW_SESSION": session})
-    str_data = child.read().decode()
-    try:
-        data = json.loads('{"x": '+str_data+'}')["x"] # Turn it into a list of dicts
-    except ValueError:
-        raise Exception("Error decoding json. Bitwarden output: " + str_data)
+            folder_id = "null" # This is to search items which aren't in any folder
+        data = []
+        for item in get_vault(session)["items"]:
+            if item["folderId"] == folder_id:
+                data.append(item)
 
-    return data
+        return data
 
 def get_folders(session):
-    child = pexpect.spawn("./bw list folders --raw", env={**os.environ, "BW_SESSION": session})
-    str_data = child.read().decode()
-    try:
-        data = json.loads('{"x": '+str_data+'}')["x"] # Turn it into a list of dicts
-    except ValueError:
-        raise Exception("Error decoding json. Bitwarden output: " + str_data)
+    return get_vault(session)["folders"]
 
     return data
 
@@ -74,5 +75,26 @@ def is_logged_in():
     else:
         return True
 
+def get_vault(session):
+    with open(VAULT_PATH) as f:
+        vault = json.load(f)
+
+    return vault
+
 def synchronize(session):
     pexpect.run("./bw sync", env={**os.environ, "BW_SESSION": session})
+
+    try:
+        child = pexpect.spawn("./bw list items", env={**os.environ, "BW_SESSION": session})
+        items = json.loads('{"x": '+child.read().decode()+'}')["x"]
+
+        child = pexpect.spawn("./bw list folders", env={**os.environ, "BW_SESSION": session})
+        folders = json.loads('{"x": '+child.read().decode()+'}')["x"]
+
+        data = {"items": items, "folders": folders}
+
+        with open(VAULT_PATH, "w") as f:
+            json.dump(data, f)
+
+    except ValueError:
+        raise Exception("Error decoding json. Bitwarden output: " + str_data)

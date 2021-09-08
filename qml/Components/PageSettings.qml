@@ -58,10 +58,13 @@ Page {
       onClicked: {
         py.call('bw_cli_wrapper.login', [serverField.input, userField.input, passwordField.input, tfaCodeField.input], function(result) {
           console.log("Logged in");
-          bwSettings.session = result;
-          mainStack.pop();
-          mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
         })
+        py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
+                  console.log("Vault synchronized");
+        })
+        bwSettings.session = result;
+        mainStack.pop();
+        mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
       }
     }
 

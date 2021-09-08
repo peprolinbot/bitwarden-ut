@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bitwarden-ut.peprolinbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-03 19:10+0000\n"
+"POT-Creation-Date: 2021-09-08 14:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Components/FolderContentsDelegate.qml:19
-#: ../qml/Components/FoldersDelegate.qml:21
+#: ../qml/Components/FolderContentsDelegate.qml:17
+#: ../qml/Components/FoldersDelegate.qml:19
 msgid "Delete"
 msgstr ""
 
-#: ../qml/Components/FolderContentsDelegate.qml:34
+#: ../qml/Components/FolderContentsDelegate.qml:33
 msgid "Copy note content"
 msgstr ""
 
-#: ../qml/Components/FolderContentsDelegate.qml:46
+#: ../qml/Components/FolderContentsDelegate.qml:41
+#: ../qml/Components/PageItemInfo.qml:48
 msgid "Copy password"
 msgstr ""
 
-#: ../qml/Components/FolderContentsDelegate.qml:58
+#: ../qml/Components/FolderContentsDelegate.qml:49
 msgid "Copy user"
 msgstr ""
 
-#: ../qml/Components/FolderContentsDelegate.qml:70
+#: ../qml/Components/FolderContentsDelegate.qml:57
 msgid "Copy 2FA"
 msgstr ""
 
-#: ../qml/Components/FolderContentsDelegate.qml:85
-msgid "Edit key"
+#: ../qml/Components/FolderContentsDelegate.qml:67
+msgid "Edit"
 msgstr ""
 
-#: ../qml/Components/FoldersDelegate.qml:35
+#: ../qml/Components/FoldersDelegate.qml:33
 msgid "Rename folder"
 msgstr ""
 
-#: ../qml/Components/FoldersDelegate.qml:71
+#: ../qml/Components/FoldersDelegate.qml:68
 msgid "No folder"
 msgstr ""
 
 #: ../qml/Components/PageFolders.qml:12 bitwarden-ut.desktop.in.h:1
 msgid "uBitwarden"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:29
+msgid "Copy username"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:36
+msgid "Username"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:55 ../qml/Components/PageSettings.qml:43
+msgid "Password"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:62
+msgid "Show"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:77
+msgid "Copy 2FA code"
+msgstr ""
+
+#: ../qml/Components/PageItemInfo.qml:84
+msgid "One time password"
 msgstr ""
 
 #: ../qml/Components/PageSettings.qml:12
@@ -64,10 +89,6 @@ msgstr ""
 
 #: ../qml/Components/PageSettings.qml:37
 msgid "User"
-msgstr ""
-
-#: ../qml/Components/PageSettings.qml:43
-msgid "Password"
 msgstr ""
 
 #: ../qml/Components/PageSettings.qml:48
