@@ -76,7 +76,9 @@ Page {
             iconName: "edit-copy"
             text: i18n.tr("Copy 2FA code")
             onTriggered: {
-              Clipboard.push(item.login.password)
+              py.call('otp_helper.get_otp', [item.login.totp], function(result) {
+                console.log("Obtained 2FA code for  "+item.name);
+                Clipboard.push(result);
             }
           }
         }
