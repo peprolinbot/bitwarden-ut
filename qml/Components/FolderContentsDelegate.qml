@@ -86,14 +86,9 @@ ListItem {
     }
 
     title.text: item.name
+    subtitle.text: item.type == 1 && item.login.username != null ? item.login.username : ""
 
     width: parent.width
     anchors.horizontalCenter: parent.horizontalCenter
-
-    Component.onCompleted: {
-      if (item.login.username != null) {
-        this.subtitle.text = item.login.username
-      }
-    }
   }
 }
