@@ -4,6 +4,7 @@ import "../Components"
 
 Page {
   objectName: "PageSettings"
+  id: pageSettings
 
   anchors.fill: parent
 
@@ -11,79 +12,164 @@ Page {
     id: header
     title: i18n.tr('Settings')
   }
-
-  Column {
-    spacing: 5
+  Flickable {
     anchors.top: header.bottom
-    anchors.left: parent.left
     anchors.right: parent.right
+    anchors.left: parent.left
     anchors.bottom: parent.bottom
+    Column {
+      anchors.fill: parent
 
-    anchors.horizontalCenter: parent.center
+      ListItem {
+        id: serverItem
 
-    LabeledTextField {
-      id: serverField
-      label: i18n.tr('Server')
-      Component.onCompleted: {
-        py.call('bw_cli_wrapper.get_server', [], function(result) {
-          console.log("Server URL is "+result);
-          serverField.input = result;
-        })
-      }
-    }
+        height: serverLayout.height + (divider.visible ? divider.height : 0)
+        divider.visible: false
 
-    LabeledTextField {
-      id: userField
-      label: i18n.tr('User')
-    }
+        SlotsLayout {
+          id: serverLayout
 
-    LabeledTextField {
-      id: passwordField
-      echoMode: TextInput.Password
-      label: i18n.tr('Password')
-    }
-
-    LabeledTextField {
-      id: tfaCodeField
-      label: i18n.tr('2FA Code')
-    }
-
-    Button {
-      id: loginButton
-      color: UbuntuColors.green
-      anchors.horizontalCenter: parent.horizontalCenter
-
-      text: i18n.tr('Login')
-
-      onClicked: {
-        py.call('bw_cli_wrapper.login', [serverField.input, userField.input, passwordField.input, tfaCodeField.input], function(result) {
-          console.log("Logged in");
-        })
-        py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
-                  console.log("Vault synchronized");
-        })
-        bwSettings.session = result;
-        mainStack.pop();
-        mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
-      }
-    }
-
-    Label {
-      id: loginStatusLabel
-      anchors.horizontalCenter: parent.horizontalCenter
-
-      font.bold: true
-      text: i18n.tr('Checking...')
-      Component.onCompleted: {
-        py.call('bw_cli_wrapper.is_logged_in', [], function(result) {
-          if (result) {
-            loginStatusLabel.text = i18n.tr('Logged in')
-            console.log("User is already logged in succesfully");
-          } else {
-            console.log("User is not logged in")
-            loginStatusLabel.text = i18n.tr('Not logged in')
+          Label {
+            id: serverLabel
+            text: i18n.tr('Server')
           }
-        })
+
+          TextField {
+            id: serverTextField
+            anchors.left: serverLabel.right
+            anchors.right: parent.right
+
+            Component.onCompleted: {
+              py.call('bw_cli_wrapper.get_server', [], function(result) {
+                console.log("Server URL is "+result);
+                serverTextField.text = result;
+              })
+            }
+          }
+        }
+      }
+
+      ListItem {
+        id: emailItem
+
+        height: emailLayout.height + (divider.visible ? divider.height : 0)
+        divider.visible: false
+
+        SlotsLayout {
+          id: emailLayout
+
+          Label {
+            id: emailLabel
+            text: i18n.tr('Email')
+          }
+
+          TextField {
+            id: emailTextField
+            anchors.left: emailLabel.right
+            anchors.right: parent.right
+          }
+        }
+      }
+
+      ListItem {
+        id: passwordItem
+
+        height: passwordLayout.height + (divider.visible ? divider.height : 0)
+        divider.visible: false
+
+        SlotsLayout {
+          id: passwordLayout
+
+          Label {
+            id: passwordLabel
+            text: i18n.tr('Password')
+          }
+
+          TextField {
+            id: passwordTextField
+            echoMode: TextInput.Password
+            anchors.left: passwordLabel.right
+            anchors.right: parent.right
+          }
+        }
+      }
+
+      ListItem {
+        id: tfaCodeItem
+
+        height: tfaCodeLayout.height + (divider.visible ? divider.height : 0)
+        divider.visible: false
+
+        SlotsLayout {
+          id: tfaCodeLayout
+
+          Label {
+            id: tfaCodeLabel
+            text: i18n.tr('2FA Code')
+          }
+
+          TextField {
+            id: tfaCodeTextField
+            anchors.left: tfaCodeLabel.right
+            anchors.right: parent.right
+          }
+        }
+      }
+
+      ListItem {
+        id: loginButtonItem
+        divider.visible: false
+
+        SlotsLayout {
+          id: loginButtonLayout
+
+          mainSlot: Button {
+            id: loginButton
+            color: UbuntuColors.green
+
+            text: i18n.tr('Login')
+
+            onClicked: {
+              py.call('bw_cli_wrapper.login', [serverTextField.text, emailTextField.text, passwordTextField.text, tfaCodeTextField.text], function(result) {
+                bwSettings.session = result;
+                console.log("Logged in");
+                py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
+                  console.log("Vault synchronized");
+                  mainStack.pop();
+                  mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
+                })
+              })
+            }
+          }
+        }
+      }
+
+      ListItem {
+        id: loginStatusItem
+        divider.visible: false
+
+        SlotsLayout {
+          id: loginStatusLayout
+
+          mainSlot: Label {
+            id: loginStatusLabel
+
+            font.bold: true
+            text: i18n.tr('Checking...')
+            horizontalAlignment: Text.AlignHCenter
+            Component.onCompleted: {
+              py.call('bw_cli_wrapper.is_logged_in', [], function(result) {
+                if (result) {
+                  loginStatusLabel.text = i18n.tr('Logged in')
+                  console.log("User is already logged in succesfully");
+                } else {
+                  console.log("User is not logged in")
+                  loginStatusLabel.text = i18n.tr('Not logged in')
+                }
+              })
+            }
+          }
+        }
       }
     }
   }
