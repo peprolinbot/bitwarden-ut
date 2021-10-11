@@ -16,8 +16,6 @@ def get_items(session, folder_id=""):
     if folder_id == "":
         return get_vault(session)["items"]
     else:
-        if folder_id == None:
-            folder_id = "null" # This is to search items which aren't in any folder
         data = []
         for item in get_vault(session)["items"]:
             if item["folderId"] == folder_id:
