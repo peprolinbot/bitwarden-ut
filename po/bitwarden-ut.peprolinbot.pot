@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bitwarden-ut.peprolinbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-18 09:32+0000\n"
+"POT-Creation-Date: 2021-10-11 12:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: ../qml/Components/PageItemInfo.qml:55 ../qml/Components/PageSettings.qml:84
+#: ../qml/Components/PageItemInfo.qml:55 ../qml/Components/PageSettings.qml:85
 msgid "Password"
 msgstr ""
 
@@ -75,27 +75,27 @@ msgstr ""
 msgid "Copy 2FA code"
 msgstr ""
 
-#: ../qml/Components/PageItemInfo.qml:86
+#: ../qml/Components/PageItemInfo.qml:87
 msgid "One time password"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:12
+#: ../qml/Components/PageSettings.qml:13
 msgid "Settings"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:33
+#: ../qml/Components/PageSettings.qml:34
 msgid "Server"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:62
+#: ../qml/Components/PageSettings.qml:63
 msgid "Email"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:106
+#: ../qml/Components/PageSettings.qml:108
 msgid "2FA Code"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:129
+#: ../qml/Components/PageSettings.qml:130
 msgid "Login"
 msgstr ""
 

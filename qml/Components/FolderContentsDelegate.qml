@@ -78,6 +78,13 @@ ListItem {
   ListItemLayout {
     id:layout
 
+    Image {
+      height: units.gu(3)
+      width: height
+
+      source: item.type == 2 ? "../../assets/note.svg" : (item.login.uris.length == 0 ? "../../assets/default-icon.png" : "https://icons.bitwarden.net/"+item.login.uris[0].uri.split("//")[1].split("/")[0]+"/icon.png")
+    }
+
     title.text: item.name
 
     width: parent.width
