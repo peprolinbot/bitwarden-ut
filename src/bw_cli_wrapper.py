@@ -7,8 +7,6 @@ import os
 import base64
 
 VAULT_DIR=os.environ['HOME']+"/.local/share/bitwarden-ut.peprolinbot"
-if not os.path.exists(VAULT_DIR):
-    os.makedirs(VAULT_DIR)
 
 VAULT_FILE_NAME="vault.json"
 
@@ -92,6 +90,9 @@ def synchronize(session):
         folders = json.loads('{"x": '+child.read().decode()+'}')["x"]
 
         data = {"items": items, "folders": folders}
+
+        if not os.path.exists(VAULT_DIR):
+            os.makedirs(VAULT_DIR)
 
         with open(VAULT_PATH, "w") as f:
             json.dump(data, f)
