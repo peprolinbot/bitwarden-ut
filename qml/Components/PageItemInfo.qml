@@ -119,6 +119,29 @@ Page {
           }
         }
       }
+
+      ListItem {
+        height: notesLayout.height + (divider.visible ? divider.height : 0)
+        visible: item.notes != null
+        trailingActions: ListItemActions {
+          actions: Action {
+            iconName: "edit-copy"
+            text: i18n.tr("Copy ntes")
+            onTriggered: {
+              Clipboard.push(item.notes)
+            }
+          }
+        }
+        SlotsLayout {
+          id: notesLayout
+
+          mainSlot: TextArea {
+            id: notesTextArea
+            height: units.gu(30)
+            text: item.notes
+          }
+        }
+      }
     }
   }
 }
