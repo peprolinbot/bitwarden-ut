@@ -48,10 +48,12 @@ def login(server, email, password, tfaCode):
     child.sendline(email)
     child.expect("Master password:")
     child.sendline(password)
-    child.expect("Two-step login method:")
-    child.sendline()
-    child.expect("Two-step login code:")
-    child.sendline(tfaCode)
+    if tfaCode != "":
+      i = child.expect(["Two-step login method:", "Two-step login code:"])
+      if i == 0:
+          child.sendline()
+          child.expect("Two-step login code:")
+      child.sendline(tfaCode)
     child.expect(pexpect.EOF)
     out = child.before.decode()
     session = re.search('BW_SESSION=".*=="', out).group()[12:-1]
