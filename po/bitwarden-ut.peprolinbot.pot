@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bitwarden-ut.peprolinbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-15 15:40+0000\n"
+"POT-Creation-Date: 2022-01-15 19:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: ../qml/Components/PageItemInfo.qml:55 ../qml/Components/PageSettings.qml:85
+#: ../qml/Components/PageItemInfo.qml:55 ../qml/Components/PageSettings.qml:91
 msgid "Password"
 msgstr ""
 
@@ -87,31 +87,31 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:34
+#: ../qml/Components/PageSettings.qml:40
 msgid "Server"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:63
+#: ../qml/Components/PageSettings.qml:69
 msgid "Email"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:108
+#: ../qml/Components/PageSettings.qml:114
 msgid "2FA Code"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:130
+#: ../qml/Components/PageSettings.qml:136
 msgid "Login"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:158
+#: ../qml/Components/PageSettings.qml:165
 msgid "Checking..."
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:163
+#: ../qml/Components/PageSettings.qml:170
 msgid "Logged in"
 msgstr ""
 
-#: ../qml/Components/PageSettings.qml:167
+#: ../qml/Components/PageSettings.qml:174
 msgid "Not logged in"
 msgstr ""
 

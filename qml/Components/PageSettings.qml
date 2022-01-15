@@ -17,7 +17,13 @@ Page {
     anchors.right: parent.right
     anchors.left: parent.left
     anchors.bottom: parent.bottom
+    ActivityIndicator {
+      id: activityIndicator
+      anchors.centerIn: parent
+      running: true
+    }
     Column {
+      visible: !activityIndicator.running
       anchors.fill: parent
 
       ListItem {
@@ -130,6 +136,7 @@ Page {
             text: i18n.tr('Login')
 
             onClicked: {
+              activityIndicator.running = true
               py.call('bw_cli_wrapper.login', [serverTextField.text, emailTextField.text, passwordTextField.text, tfaCodeTextField.text], function(result) {
                 bwSettings.session = result;
                 console.log("Logged in");
@@ -166,6 +173,7 @@ Page {
                   console.log("User is not logged in")
                   loginStatusLabel.text = i18n.tr('Not logged in')
                 }
+                activityIndicator.running = false
               })
             }
           }
