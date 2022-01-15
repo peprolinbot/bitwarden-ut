@@ -30,6 +30,12 @@ Page {
     }
   }
 
+  ActivityIndicator {
+    id: activityIndicator
+    anchors.centerIn: parent
+    running: true
+  }
+
   Component {
     id: folderContentsDelegate
 
@@ -38,6 +44,7 @@ Page {
 
   ItemsList {
     id: itemsList
+    visible: !activityIndicator.running
     anchors.top: header.bottom
     anchors.right: parent.right
     anchors.left: parent.left
@@ -49,6 +56,7 @@ Page {
     py.call('bw_cli_wrapper.get_items', [bwSettings.session, id], function(result) {
       itemsList.populate(result);
       console.log("Obtained items from Bitwarden");
+      activityIndicator.running = false;
     })
   }
 }

@@ -22,6 +22,7 @@ Page {
       Action {
         iconName: "reload"
         onTriggered: {
+          activityIndicator.running = true;
           py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
                     console.log("Vault synchronized");
                 })
@@ -33,6 +34,12 @@ Page {
     }
   }
 
+  ActivityIndicator {
+    id: activityIndicator
+    anchors.centerIn: parent
+    running: true
+  }
+
   Component {
     id: foldersDelegate
 
@@ -41,6 +48,7 @@ Page {
 
   ItemsList {
     id: folderList
+    visible: !activityIndicator.running
     anchors.top: header.bottom
     anchors.right: parent.right
     anchors.left: parent.left
@@ -52,6 +60,7 @@ Page {
     py.call('bw_cli_wrapper.get_folders', [bwSettings.session], function(result) {
               folderList.populate(result);
               console.log("Obtained items from Bitwarden");
+              activityIndicator.running = false;
           })
   }
 }
