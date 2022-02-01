@@ -16,7 +16,7 @@ Page {
       Action {
         iconName: "settings"
         onTriggered: {
-          mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
+          mainStack.push(Qt.resolvedUrl("PageLogin.qml"));
         }
       },
       Action {

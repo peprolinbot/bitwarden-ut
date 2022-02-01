@@ -46,18 +46,12 @@ MainView {
      }
    }
 
-   Component {
-     id: mainPageComponent
-
-     PageFolders {
-       id: mainPage
-       objectName: "mainPage"
-     }
-   }
-
-
    Component.onCompleted: {
-     mainStack.push(mainPageComponent);
+     if (bwSettings.session == "") {
+       mainStack.push(Qt.resolvedUrl("Components/PageLogin.qml"));
+     } else {
+       mainStack.push(Qt.resolvedUrl("Components/PageFolders.qml"));
+     }
    }
       Python {
         id: py

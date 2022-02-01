@@ -3,14 +3,14 @@ import Ubuntu.Components 1.3
 import "../Components"
 
 Page {
-  objectName: "PageSettings"
-  id: pageSettings
+  objectName: "PageLogin"
+  id: pageLogin
 
   anchors.fill: parent
 
   header: PageHeader {
     id: header
-    title: i18n.tr('Settings')
+    title: i18n.tr('Login')
   }
   Flickable {
     anchors.top: header.bottom
@@ -143,7 +143,7 @@ Page {
                 py.call('bw_cli_wrapper.synchronize', [bwSettings.session], function(result) {
                   console.log("Vault synchronized");
                   mainStack.pop();
-                  mainStack.push(Qt.resolvedUrl("PageSettings.qml"));
+                  mainStack.push(Qt.resolvedUrl("PageFolders.qml"));
                 })
               })
             }
